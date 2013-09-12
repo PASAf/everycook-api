@@ -1,0 +1,17 @@
+* API
+** Install
+   #+BEGIN_SRC shell
+    apt-get build-dep python-mysqldb python-virtualenv
+    virtualenv env
+    . env/bin/activate
+    pip install -U distribute
+    pip install -r requirements.txt
+    python recipes.py
+   #+END_SRC
+** Access
+*** List all recipes
+   http://127.0.0.1:5000/api/recipes
+*** Get recipe's details with rec_id=4 
+   http://127.0.0.1:5000/api/recipes/4 
+*** TODO list recipe's steps
+*** TODO list ingredients
