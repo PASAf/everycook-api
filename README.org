@@ -13,5 +13,7 @@
    http://127.0.0.1:5000/api/recipes
 *** Get recipe's details with rec_id=4 
    http://127.0.0.1:5000/api/recipes/4 
+*** TODO reflect all database at once, ensure relationships follow
+    http://docs.sqlalchemy.org/en/rel_0_8/core/reflection.html#reflecting-all-tables-at-once
 *** TODO list recipe's steps
 *** TODO list ingredients
