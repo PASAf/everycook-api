@@ -1,0 +1,32 @@
+#!/bin/bash
+
+APP_DIR=/vagrant/everycook-api
+VIRTUALENV_DIR=$APP_DIR/env
+ACTIVATE=$VIRTUALENV_DIR/bin/activate
+PID_FILE=$VIRTUALENV_DIR/everycook.pid
+START_CMD="gunicorn simple_api:app --daemon -n everycookapi -p $PID_FILE --chdir $APP_DIR -b :8000"
+NAME=everycook-api
+DESC="everycook api"
+
+
+case "$1" in
+  start)
+        echo -n "Starting $DESC: "
+	. $ACTIVATE
+	$START_CMD
+        echo "$NAME."
+        ;;
+  stop)
+        echo -n "Stopping $DESC: "
+	kill `cat $PID_FILE`
+        echo "$NAME."
+        ;;
+  restart)
+        echo -n "Restarting $DESC: "
+	kill `cat $PID_FILE`
+	. $ACTIVATE
+	$START_CMD
+        echo "$NAME."
+esac
+
+exit 0

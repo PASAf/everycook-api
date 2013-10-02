@@ -2,14 +2,74 @@
 
 ** Install
 
+*** *NOTES*
+    
+    You will need access to the everycook DB (see [[https://github.com/everycook/EveryCook][Everycook's github documentation]]).
+    For now settings are hardcoded in the file simple_api.py, you will need to change the DB config in there in the following line
+    
+   #+BEGIN_SRC python
+   engine = create_engine(
+	'mysql://root:root@localhost/ec',
+	encoding='ISO-8859-1',
+	convert_unicode=True)
+   #+END_SRC
+   
+*** Clone the repo where you want to install the app
+
+   #+BEGIN_SRC shell
+    cd /where/you/want/to/install
+    git clone https://github.com/abondis/everycook-api.git
+   #+END_SRC
+
+*** Install system dependencies
+
    #+BEGIN_SRC shell
     apt-get build-dep python-mysqldb python-virtualenv
+   #+END_SRC
+
+*** Create a [[https://pypi.python.org/pypi/virtualenv][Virtualenv]]
+
+    This will allow us to install needed python libraries without touching the system ones.
+   #+BEGIN_SRC shell
     virtualenv env
+   #+END_SRC
+
+*** Activate the [[https://pypi.python.org/pypi/virtualenv][Virtualenv]]
+
+    Putting us in the isolated environment
+   #+BEGIN_SRC shell
     . env/bin/activate
+   #+END_SRC
+
+*** Install python libraries in the activated environment
+
+   #+BEGIN_SRC shell
     pip install -U distribute
     pip install -r requirements.txt
+   #+END_SRC
+
+*** Test run the app
+
+   #+BEGIN_SRC shell
     python recipes.py
    #+END_SRC
+
+*** Init script (to run as a daemon)
+
+**** Copy or link the file 'everycook_api' to your initscript folder
+     #+BEGIN_SRC shell
+      cp everycook_api /etc/init.d/
+     #+END_SRC
+
+**** Run everycook_api
+    #+BEGIN_SRC shell
+     /etc/init.d/everycook_api start
+    #+END_SRC 
+
+**** Stop everycook_api
+    #+BEGIN_SRC shell
+     /etc/init.d/everycook_api stop
+    #+END_SRC 
 
 ** Access
 
