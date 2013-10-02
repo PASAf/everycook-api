@@ -4,7 +4,9 @@ APP_DIR=/vagrant/everycook-api
 VIRTUALENV_DIR=$APP_DIR/env
 ACTIVATE=$VIRTUALENV_DIR/bin/activate
 PID_FILE=$VIRTUALENV_DIR/everycook.pid
-START_CMD="gunicorn simple_api:app --daemon -n everycookapi -p $PID_FILE --chdir $APP_DIR -b :8000"
+HOST=''
+PORT=8000
+START_CMD="gunicorn simple_api:app --daemon -n everycookapi -p $PID_FILE --chdir $APP_DIR -b $HOST:$PORT"
 NAME=everycook-api
 DESC="everycook api"
 
