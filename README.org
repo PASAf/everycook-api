@@ -8,10 +8,10 @@
     For now settings are hardcoded in the file simple_api.py, you will need to change the DB config in there in the following line
     
    #+BEGIN_SRC python
-   engine = create_engine(
-	'mysql://root:root@localhost/ec',
-	encoding='ISO-8859-1',
-	convert_unicode=True)
+   engine = create_engine(                                                                                                                               
+	'mysql://root:root@localhost/ec',                                                                                                                 
+	encoding='ISO-8859-1',                                                                                                                            
+	convert_unicode=True) 
    #+END_SRC
    
 *** Clone the repo where you want to install the app
