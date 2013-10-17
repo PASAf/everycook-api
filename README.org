@@ -26,6 +26,8 @@
    #+BEGIN_SRC shell
     apt-get build-dep python-mysqldb python-virtualenv
    #+END_SRC
+   
+   - if virtualenv is not available in your package manager see http://www.virtualenv.org/en/latest/#installation
 
 *** Create a [[https://pypi.python.org/pypi/virtualenv][Virtualenv]]
 
